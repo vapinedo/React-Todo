@@ -18,3 +18,17 @@ body {
 .todolist__item p {
     margin: 0;
 }
+.todolist__item div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.todolist__item .todolist__checkitem {
+    margin-right: 12px;
+}
+.todolist__item i {
+    cursor: pointer;
+}
+.task-complete {
+    text-decoration: line-through;
+}

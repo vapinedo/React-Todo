@@ -20,7 +20,11 @@ export const TodoPage = () => {
             <ul>
                 {todos.map(todo => (
                     <li key={todo.id} className="todolist__item">
-                        <p>{todo.description}</p>
+                        <div>
+                            <i class='bx bx-circle todolist__checkitem'></i>
+                            {/* <i class='bx bx-check-circle todolist__checkitem'></i> */}
+                            <p>{todo.description}</p>
+                        </div>
                         <i class='bx bx-trash-alt'></i>
                     </li>
                 ))}

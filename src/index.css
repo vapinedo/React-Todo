@@ -7,6 +7,16 @@ body {
 .main-wrapper {
     padding: 2rem;
 }
+
+/*-----------------------  
+    Todo List    
+----------------------- */ 
+.todolist__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
 .todolist__item {
     display: flex;
     border-radius: 5px;

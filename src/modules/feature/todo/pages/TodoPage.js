@@ -14,8 +14,12 @@ export const TodoPage = () => {
     
     return (
         <div className="row todolist">
-            <h3>Todo List ({todos.length})</h3>
-            <hr />
+
+            <header className="todolist__header">
+                <h3>Todo List ({todos.length})</h3>
+
+                <button className="btn btn-primary btn-sm">New Task</button>
+            </header>
 
             <ul>
                 {todos.map(todo => (

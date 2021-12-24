@@ -17,11 +17,11 @@ export const TodoPage = () => {
             <h3>Todo List ({todos.length})</h3>
             <hr />
 
-            <ul>
+            <ul className="px-4">
                 {todos.map(todo => (
-                    <li key={todo.id}>
+                    <li key={todo.id} className="d-flex justify-content-between">
                         <p>{todo.description}</p>
-                        <span>icono</span>
+                        <i class='bx bx-trash-alt'></i>
                     </li>
                 ))}
             </ul>

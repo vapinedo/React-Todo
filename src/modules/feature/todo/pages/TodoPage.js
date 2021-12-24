@@ -14,14 +14,16 @@ export const TodoPage = () => {
     
     return (
         <div>
-            <h3>Todo List</h3>
+            <h3>Todo List ({todos.length})</h3>
             <hr />
 
             <ul>
-                <li>Watch React udemy course</li>
-                <li>Go to workout</li>
-                <li>Spent time with family</li>
-                <li>Rest</li>
+                {todos.map(todo => (
+                    <li key={todo.id}>
+                        <p>{todo.description}</p>
+                        <span>icono</span>
+                    </li>
+                ))}
             </ul>
         </div>
     )

@@ -13,13 +13,13 @@ export const TodoPage = () => {
     console.log(todos);
     
     return (
-        <div>
+        <div className="row todolist">
             <h3>Todo List ({todos.length})</h3>
             <hr />
 
-            <ul className="px-4">
+            <ul>
                 {todos.map(todo => (
-                    <li key={todo.id} className="d-flex justify-content-between">
+                    <li key={todo.id} className="todolist__item">
                         <p>{todo.description}</p>
                         <i class='bx bx-trash-alt'></i>
                     </li>

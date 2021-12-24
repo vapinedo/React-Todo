@@ -7,3 +7,14 @@ body {
 .main-wrapper {
     padding: 2rem;
 }
+.todolist__item {
+    display: flex;
+    border-radius: 5px;
+    padding: .5rem 2rem;
+    align-items: center;
+    background-color: #132237;
+    justify-content: space-between; 
+}
+.todolist__item p {
+    margin: 0;
+}

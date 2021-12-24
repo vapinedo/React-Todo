@@ -9,6 +9,14 @@ body {
 }
 
 /*-----------------------  
+    Modal Winow
+----------------------- */ 
+.modal .modal-title {
+    color: #444;
+    font-weight: 600;;
+}
+
+/*-----------------------  
     Todo List    
 ----------------------- */ 
 .todolist__header {

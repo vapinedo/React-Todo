@@ -1,16 +1,18 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { todoReducer } from '@core/reducers/todoReducer';
 import { ModalWindow } from '@shared/components/ModalWindow';
 
-const initialState = [{
-    id: new Date().getTime(),
-    description: "Study about RPA",
-    done: false
-}];
+const init = () => {
+    return JSON.parse(localStorage.getItem("todos")) || [];
+};
 
 export const TodoPage = () => {
 
-    const [todos, dispatch] = useReducer(todoReducer, initialState);
+    const [todos, dispatch] = useReducer(todoReducer, [], init);
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
     
     return (
         <>

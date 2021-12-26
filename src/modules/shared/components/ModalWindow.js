@@ -1,17 +1,24 @@
 import React from 'react';
+import { useForm } from '@core/hooks/useForm';
 
 export const ModalWindow = ({ dispatch }) => {
+
+    const [{ description }, onInputChange, reset] = useForm({ description: "" });
 
     const onSubmit = (e) => {
         e.preventDefault();
 
+        if (description.trim().length <= 1) return;
+
         const task = {
             id: new Date().getTime(),
-            description: "New task",
+            description: description,
             done: false
         };
+
         const action = { type: "add", payload: task };
         dispatch(action);
+        reset();
     };
     
     return (
@@ -28,7 +35,9 @@ export const ModalWindow = ({ dispatch }) => {
                             <input 
                                 type="text" 
                                 name="description" 
+                                onChange={ onInputChange }
                                 className="form-control mt-3"
+                                value={ description }
                                 placeholder="Descripción de la tarea" />
 
                                 <button type="submit" className="btn btn-primary mt-4">Save</button>

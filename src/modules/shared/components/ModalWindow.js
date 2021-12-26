@@ -16,7 +16,7 @@ export const ModalWindow = ({ dispatch }) => {
             done: false
         };
 
-        const action = { type: "add", payload: task };
+        const action = { type: "create", payload: task };
         dispatch(action);
         reset();
     };

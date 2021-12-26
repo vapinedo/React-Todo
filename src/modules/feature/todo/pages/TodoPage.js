@@ -13,7 +13,12 @@ export const TodoPage = () => {
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
-    
+
+    const onDelete = (todoId) => {
+        const action = { type: "delete", payload: todoId };
+        dispatch(action);
+    };
+
     return (
         <>
             <div className="row todolist">
@@ -33,7 +38,7 @@ export const TodoPage = () => {
                                 {/* <i className='bx bx-check-circle todolist__checkitem'></i> */}
                                 <p>{todo.description}</p>
                             </div>
-                            <i className='bx bx-trash-alt'></i>
+                            <i onClick={ () => onDelete(todo.id) } className='bx bx-trash-alt'></i>
                         </li>
                     ))}
                 </ul>

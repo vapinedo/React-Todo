@@ -1,6 +1,19 @@
 import React from 'react';
 
-export const ModalWindow = () => {
+export const ModalWindow = ({ dispatch }) => {
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const task = {
+            id: new Date().getTime(),
+            description: "New task",
+            done: false
+        };
+        const action = { type: "add", payload: task };
+        dispatch(action);
+    };
+    
     return (
         <div className="modal fade" id="newTaskModal" aria-labelledby="newTaskModalLabel" aria-hidden="true">
             <div className="modal-dialog">
@@ -11,18 +24,15 @@ export const ModalWindow = () => {
                     </div>
 
                     <div className="modal-body">
-                        <form>
+                        <form onSubmit={ onSubmit } autoComplete="off">
                             <input 
                                 type="text" 
                                 name="description" 
-                                className="form-control"
+                                className="form-control mt-3"
                                 placeholder="Descripción de la tarea" />
-                        </form>
-                    </div>
 
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary">Save</button>
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" className="btn btn-primary mt-4">Save</button>
+                        </form>
                     </div>
                 </div>
             </div>

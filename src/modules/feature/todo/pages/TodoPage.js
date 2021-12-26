@@ -10,7 +10,7 @@ const initialState = [{
 
 export const TodoPage = () => {
 
-    const [todos] = useReducer(todoReducer, initialState);
+    const [todos, dispatch] = useReducer(todoReducer, initialState);
     
     return (
         <>
@@ -37,7 +37,7 @@ export const TodoPage = () => {
                 </ul>
             </div>
 
-            <ModalWindow />
+            <ModalWindow dispatch={dispatch} />
         </>
     )
 }

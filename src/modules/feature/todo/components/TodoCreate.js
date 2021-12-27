@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from '@core/hooks/useForm';
 
-export const ModalWindow = ({ dispatch }) => {
+export const TodoCreate = ({ onCreate }) => {
 
     const [{ description }, onInputChange, reset] = useForm({ description: "" });
 
@@ -10,13 +10,13 @@ export const ModalWindow = ({ dispatch }) => {
 
         if (description.trim().length <= 1) return;
 
-        const task = {
+        const newTodo = {
             id: new Date().getTime(),
             description: description,
             done: false
         };
 
-        dispatch({ type: "create", payload: task });
+        onCreate(newTodo);
         reset();
     };
     

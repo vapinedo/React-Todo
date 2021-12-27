@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { todoReducer } from '@core/reducers/todoReducer';
-import { ModalWindow } from '@shared/components/ModalWindow';
+import { TodoList } from '@feature/todo/components/TodoList';
+import { TodoCreate } from '@feature/todo/components/TodoCreate';
 
 const init = () => {
     return JSON.parse(localStorage.getItem("todos")) || [];
@@ -13,6 +14,10 @@ export const TodoPage = () => {
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
     }, [todos]);
+
+    const onCreate = (newTodo) => {
+        dispatch({ type: "create", payload: newTodo });
+    };
 
     const onDelete = (todoId) => {
         dispatch({ type: "delete", payload: todoId });
@@ -33,20 +38,13 @@ export const TodoPage = () => {
                     </button>
                 </header>
 
-                <ul>
-                    {todos.map(todo => (
-                        <li key={todo.id} className="todolist__item">
-                            <div onClick={ () => onTaskToggle(todo.id) }>
-                                <i className={`${ todo.done ? "bx bx-check-circle todolist__checkitem " : "bx bx-circle todolist__checkitem" }`}></i>
-                                <p className={`${ todo.done && "task-complete" }`}>{todo.description}</p>
-                            </div>
-                            <i onClick={ () => onDelete(todo.id) } className='bx bx-trash-alt'></i>
-                        </li>
-                    ))}
-                </ul>
+                <TodoList 
+                    todos={todos} 
+                    onDelete={onDelete} 
+                    onTaskToggle={onTaskToggle} />
             </div>
 
-            <ModalWindow dispatch={dispatch} />
+            <TodoCreate onCreate={onCreate} />
         </>
     )
 }

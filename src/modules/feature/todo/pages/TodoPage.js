@@ -15,8 +15,11 @@ export const TodoPage = () => {
     }, [todos]);
 
     const onDelete = (todoId) => {
-        const action = { type: "delete", payload: todoId };
-        dispatch(action);
+        dispatch({ type: "delete", payload: todoId });
+    };
+
+    const onTaskToggle = (todoId) => {
+        dispatch({ type: "toggle", payload: todoId });
     };
 
     return (
@@ -33,10 +36,9 @@ export const TodoPage = () => {
                 <ul>
                     {todos.map(todo => (
                         <li key={todo.id} className="todolist__item">
-                            <div>
-                                <i className='bx bx-circle todolist__checkitem'></i>
-                                {/* <i className='bx bx-check-circle todolist__checkitem'></i> */}
-                                <p>{todo.description}</p>
+                            <div onClick={ () => onTaskToggle(todo.id) }>
+                                <i className={`${ todo.done ? "bx bx-check-circle todolist__checkitem " : "bx bx-circle todolist__checkitem" }`}></i>
+                                <p className={`${ todo.done && "task-complete" }`}>{todo.description}</p>
                             </div>
                             <i onClick={ () => onDelete(todo.id) } className='bx bx-trash-alt'></i>
                         </li>
